@@ -41,6 +41,18 @@ size_t String_get_length(const String *self)
     return self->length;
 }
 
+void String_empty(String *self)
+{
+    self->length = 0;
+}
+
+char String_get_char_at(const String *self, size_t at)
+{
+    if(String_get_length(self) < at)
+        return '\0';
+    return String_get_data(self)[at];
+}
+
 void String_append_data(String *self, size_t length, const void *data)
 {
     if(self->size < self->length + length)
@@ -49,7 +61,7 @@ void String_append_data(String *self, size_t length, const void *data)
     self->length += length;
 }
 
-void String_append_string(String *self, const char *data)
+void String_append_char_string(String *self, const char *data)
 {
     String_append_data(self, strlen(data), data);
 }
@@ -64,7 +76,7 @@ void String_append_String(String *self, const String *other)
     String_append_data(self, String_get_length(other), String_get_data(other));
 }
 
-void String_compute_string(String *self, char **ret)
+void String_compute_char_string(String *self, char **ret)
 {
     *ret = malloc(sizeof(char) * (String_get_length(self) + 1));
     memcpy(*ret, String_get_data(self), String_get_length(self));
