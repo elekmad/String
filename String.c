@@ -66,6 +66,12 @@ void String_append_char_string(String *self, const char *data)
     String_append_data(self, strlen(data), data);
 }
 
+void String_set_char_string(String *self, const char *data)
+{
+    String_empty(self);
+    String_append_char_string(self, data);
+}
+
 void String_append_char(String *self, char c)
 {
     String_append_data(self, 1, &c);
