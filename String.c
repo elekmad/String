@@ -29,6 +29,7 @@ static void String_resize(String *self, size_t newsize)
 {
     if(self->size < newsize)
         self->data = realloc(self->data, newsize);
+    self->size = newsize;
 }
 
 char * const String_get_data(const String *self)
@@ -41,9 +42,17 @@ size_t String_get_length(const String *self)
     return self->length;
 }
 
+static void String_set_length(String *self, size_t new_length)
+{
+    if(self->size <= new_length)
+        return;
+    self->length = new_length;
+    self->data[self->length] = '\0';//For char_strings compatibility
+}
+
 void String_empty(String *self)
 {
-    self->length = 0;
+    String_set_length(self, 0);
 }
 
 char String_get_char_at(const String *self, size_t at)
@@ -55,10 +64,11 @@ char String_get_char_at(const String *self, size_t at)
 
 void String_append_data(String *self, size_t length, const void *data)
 {
-    if(self->size < self->length + length)
-        String_resize(self, self->length + length);
+    size_t new_length = self->length + length + 1;//+1 for '\0' for char_strings
+    if(self->size < new_length)
+        String_resize(self, new_length);
     memcpy(self->data + self->length, data, length);
-    self->length += length;
+    String_set_length(self, new_length - 1);
 }
 
 void String_append_char_string(String *self, const char *data)
