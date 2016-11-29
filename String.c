@@ -35,7 +35,7 @@ static void String_resize(String *self, size_t newsize)
 /*
  * @return This function return data directly, be careful, return NULL  when len = 0;
  */
-char * const String_get_data(const String *self)
+const char * String_get_data(const String *self)
 {
     return self->data;
 }
@@ -43,7 +43,7 @@ char * const String_get_data(const String *self)
 /*
  * @return This function return "" when len = 0 for char_string compatibility.
  */
-char * const String_get_char_string(const String *self)
+const char * String_get_char_string(const String *self)
 {
     return self->length > 0 ? self->data : "";
 }
