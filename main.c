@@ -7,10 +7,11 @@ int main(int argc, char **argv)
 {
     String test;
     String_init(&test);
+    printf("'%.*s' '%s'\n", (int)String_get_length(&test), String_get_data(&test), String_get_char_string(&test));
     String_append_char_string(&test, "foobar");
     char *ret;
     String_compute_char_string(&test, &ret);
-    printf("'%.*s' '%s' '%s'\n", (int)String_get_length(&test), String_get_data(&test), ret, String_get_data(&test));
+    printf("'%.*s' '%s' '%s'\n", (int)String_get_length(&test), String_get_data(&test), ret, String_get_char_string(&test));
     free(ret);
     exit(0);
 }

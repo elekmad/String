@@ -17,6 +17,7 @@ void String_init(String *self);
 void String_finalize(String *self);
 void String_free(String *self);
 char *const String_get_data(const String *self);
+char * const String_get_char_string(const String *self);
 size_t String_get_length(const String *self);
 void String_empty(String *self);
 char String_get_char_at(const String *self, size_t at);
