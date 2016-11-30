@@ -36,6 +36,7 @@ if(NOT EXTERNAL_PROJECT)
                      COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/testBin/${testName} )
     endforeach(testSrc)
 
+    # Thanks to https://tty1.net/blog/2014/cmake-doxygen_en.html for this part
     # add a target to generate API documentation with Doxygen
     find_package(Doxygen)
     option(BUILD_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" ${DOXYGEN_FOUND})
