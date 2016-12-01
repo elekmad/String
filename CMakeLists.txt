@@ -6,6 +6,7 @@ enable_testing()
 
 add_library(Strings STATIC String.c String.h)
 include_directories(Strings ${CMAKE_CURRENT_SOURCE_DIR})
+add_definitions(-D_GNU_SOURCE)
 if(NOT EXTERNAL_PROJECT)
     # Thanks to http://neyasystems.com/an-engineers-guide-to-unit-testing-cmake-and-boost-unit-tests/ for this part
     #Setup CMake to run tests

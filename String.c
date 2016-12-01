@@ -1,6 +1,8 @@
 #include <string.h>
 #include <String.h>
 #include <stdlib.h>
+#include <stdarg.h>
+#include <stdio.h>
 
 String *String_new(void)
 {
@@ -101,6 +103,18 @@ void String_append_char(String *self, char c)
 void String_append_String(String *self, const String *other)
 {
     String_append_data(self, String_get_length(other), String_get_data(other));
+}
+
+void String_append_printf(String *self, const char *fmt, ...)
+{
+   char *char_string;
+   va_list args;
+   int len;
+   va_start(args, fmt);
+   len = vasprintf(&char_string, fmt, args);
+   String_append_data(self, (size_t)len, (void*)char_string);
+   free(char_string);
+   va_end(args);
 }
 
 void String_compute_char_string(String *self, char **ret)
