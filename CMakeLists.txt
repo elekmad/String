@@ -7,6 +7,7 @@ add_library(Strings STATIC String.c String.h)
 include_directories(Strings ${CMAKE_CURRENT_SOURCE_DIR})
 add_definitions(-D_GNU_SOURCE)
 # add unit tests in tests directory (make test to run)
+set(testLink Strings)
 include(unittests.cmake)
 # add dpoxygen functionality
 include(doxygen.cmake)
