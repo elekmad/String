@@ -138,11 +138,21 @@ int String_compare_with_char_string(const String *self, const char *other)
 
 int String_do_end_with_other(const String *self, const String *other)
 {
-    if(String_get_length(other) > String_get_length(self))
+    return String_do_end_with_data(self, String_get_length(other), String_get_char_string(other));
+}
+
+int String_do_end_with_char_string(const String *self, const char *other)
+{
+    return String_do_end_with_data(self, strlen(other), other);
+}
+
+int String_do_end_with_data(const String *self, const size_t length, const void *data)
+{
+    if(length > String_get_length(self))
         return -1;
     else
     {
-        const char *char_self = String_get_char_string(self), *char_other = String_get_char_string(other);
-        return strcmp(char_self + String_get_length(self) - String_get_length(other), char_other);
+        const char *char_self = String_get_char_string(self), *char_other = (char*)data;;
+        return strcmp(char_self + String_get_length(self) - length, char_other);
     }
 }
