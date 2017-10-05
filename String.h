@@ -27,6 +27,9 @@ void String_set_char_string(String *self, const char *data);
 void String_append_char(String *self, char c);
 void String_append_String(String *self, const String *other);
 void String_append_printf(String *self, const char *fmt, ...);
-void String_compute_char_string(String *self, char **ret);
+void String_compute_char_string(const String *self, char **ret);
+int String_compare_with_other(const String *self, const String *other);
+int String_compare_with_char_string(const String *self, const char *other);
+int String_do_end_with_other(const String *self, const String *other);
 
 #endif//__STRING_H__

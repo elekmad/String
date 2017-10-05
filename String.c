@@ -117,9 +117,32 @@ void String_append_printf(String *self, const char *fmt, ...)
    va_end(args);
 }
 
-void String_compute_char_string(String *self, char **ret)
+void String_compute_char_string(const String *self, char **ret)
 {
     *ret = malloc(sizeof(char) * (String_get_length(self) + 1));
     memcpy(*ret, String_get_data(self), String_get_length(self));
     (*ret)[String_get_length(self)] = '\0';
+}
+
+int String_compare_with_other(const String *self, const String *other)
+{
+    const char *char_self = String_get_char_string(self), *char_other = String_get_char_string(other);
+    return strcmp(char_self, char_other);
+}
+
+int String_compare_with_char_string(const String *self, const char *other)
+{
+    const char *char_self = String_get_char_string(self);
+    return strcmp(char_self, other);
+}
+
+int String_do_end_with_other(const String *self, const String *other)
+{
+    if(String_get_length(other) > String_get_length(self))
+        return -1;
+    else
+    {
+        const char *char_self = String_get_char_string(self), *char_other = String_get_char_string(other);
+        return strcmp(char_self + String_get_length(self) - String_get_length(other), char_other);
+    }
 }
