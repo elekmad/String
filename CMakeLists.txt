@@ -1,6 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
 #Déclaration du projet
-cmake_policy(SET CMP0004 OLD)
 project(Strings)
 
 add_library(Strings STATIC String.c String.h)
