@@ -1,6 +1,7 @@
 #include <String.h>
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #define xstr(s) str(s)
 #define str(s) #s
@@ -32,5 +33,9 @@ int main(int argc, char **argv)
     else
         fprintf(stderr, "%.*s\n", (int)String_get_length(&s), String_get_char_string(&s));
     String_finalize(&s);
-    return ret;
+    if(ret == 0)
+        exit(EXIT_SUCCESS);
+    else
+        exit(EXIT_FAILURE);
+
 }

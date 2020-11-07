@@ -1,6 +1,7 @@
 #include <String.h>
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #define CHAR_STRING_TEST "foobar"
 #define CHAR_STRING_OTHER_OK CHAR_STRING_TEST
@@ -30,5 +31,9 @@ int main(int argc, char **argv)
     }
     String_finalize(&o);
     String_finalize(&s);
-    return ret;
+    if(ret == 0)
+        exit(EXIT_SUCCESS);
+    else
+        exit(EXIT_FAILURE);
+
 }

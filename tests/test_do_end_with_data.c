@@ -1,6 +1,7 @@
 #include <String.h>
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #define CHAR_STRING_OTHER "foobar"
 #define CHAR_STRING_SELF_OK CHAR_STRING_OTHER
@@ -47,5 +48,9 @@ int main(int argc, char **argv)
         }
     }
     String_finalize(&s1);
-    return ret;
+    if(ret == 0)
+        exit(EXIT_SUCCESS);
+    else
+        exit(EXIT_FAILURE);
+
 }

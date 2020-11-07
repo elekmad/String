@@ -1,6 +1,7 @@
 #include <String.h>
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #define CHAR_STRING_TEST "foobar"
 
@@ -26,5 +27,9 @@ int main(int argc, char **argv)
         fprintf(stderr, "char string does not match : '%s' <> '%s'\n", String_get_char_string(&s), CHAR_STRING_TEST);
     }
     String_finalize(&s);
-    return ret;
+    if(ret == 0)
+        exit(EXIT_SUCCESS);
+    else
+        exit(EXIT_FAILURE);
+
 }

@@ -1,6 +1,7 @@
 #include <String.h>
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 int main(int argc, char **argv)
 {
@@ -23,5 +24,9 @@ int main(int argc, char **argv)
         fprintf(stderr, "char string should be empty : '%s'\n", String_get_char_string(&s));
     }
     String_finalize(&s);
-    return ret;
+    if(ret == 0)
+        exit(EXIT_SUCCESS);
+    else
+        exit(EXIT_FAILURE);
+
 }
