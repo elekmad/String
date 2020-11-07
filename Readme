@@ -1,2 +1,2 @@
-cmake . -DBUILD_UNITTESTS=1 puis make pour les tests unitaires.
+cmake . -DBUILD_UNITTESTS=1 puis make pour compiler les tests unitaires, ctest pour lancer les tests
 cmake . -DBUILD_DOCUMENTATION=1 puis cmake doc pour la doc.
