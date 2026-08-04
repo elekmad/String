@@ -13,11 +13,11 @@ include(unittests.cmake)
 include(doxygen.cmake)
 
 find_package(Python3 REQUIRED)
-add_custom_target(proto
+add_custom_target(String_sproto
     COMMAND ${Python3_EXECUTABLE}
             ${CMAKE_SOURCE_DIR}/proto.py
 )
-add_dependencies(Strings proto)
+add_dependencies(Strings Strings_proto)
 
 if( WITH_COREDEBUG )
   add_definitions(-ggdb3)
