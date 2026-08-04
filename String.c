@@ -156,3 +156,9 @@ int String_do_end_with_data(const String *self, const size_t length, const void 
         return strcmp(char_self + String_get_length(self) - length, char_other);
     }
 }
+
+void String_cpy(String *self, const String *other)
+{
+	String_empty(self);
+    String_append_data(self, String_get_length(other), String_get_data(other));
+}

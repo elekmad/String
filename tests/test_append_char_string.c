@@ -4,11 +4,12 @@
 #include <stdlib.h>
 
 #define CHAR_STRING_TEST "foobar"
+#define CHAR_STRING_TEST2 "coincoin"
 
 int main(int argc, char **argv)
 {
     int ret = 0;
-    String s;
+    String s, s2;
     String_init(&s);
     String_append_char_string(&s, CHAR_STRING_TEST);
     if(String_get_length(&s) != strlen(CHAR_STRING_TEST))
@@ -26,6 +27,25 @@ int main(int argc, char **argv)
         ret = -1;
         fprintf(stderr, "char string does not match : '%s' <> '%s'\n", String_get_char_string(&s), CHAR_STRING_TEST);
     }
+
+    String_init(&s2);
+    String_append_char_string(&s2, CHAR_STRING_TEST2);
+    if(strcmp(String_get_char_string(&s2), CHAR_STRING_TEST2) != 0)
+	{
+		ret = -1;
+		fprintf(stderr, "char string does not match : '%s' <> '%s'\n", String_get_char_string(&s2), CHAR_STRING_TEST);
+	}
+
+    String_cpy(&s2, &s);
+
+    if(strcmp(String_get_char_string(&s2), String_get_char_string(&s)) != 0)
+	{
+		ret = -1;
+		fprintf(stderr, "char string does not match : '%s' <> '%s'\n", String_get_char_string(&s2), String_get_char_string(&s));
+	}
+
+    String_finalize(&s2);
+
     String_finalize(&s);
     if(ret == 0)
         exit(EXIT_SUCCESS);
