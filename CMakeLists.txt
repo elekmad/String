@@ -12,12 +12,14 @@ include(unittests.cmake)
 # add dpoxygen functionality
 include(doxygen.cmake)
 
-find_package(Python3 REQUIRED)
-add_custom_target(Strings_proto
-    COMMAND ${Python3_EXECUTABLE}
-            ${CMAKE_SOURCE_DIR}/proto.py
-)
-add_dependencies(Strings Strings_proto)
+if(PROJECT_IS_TOP_LEVEL)
+	find_package(Python3 REQUIRED)
+	add_custom_target(proto
+	    COMMAND ${Python3_EXECUTABLE}
+	            ${CMAKE_SOURCE_DIR}/proto.py
+	)
+	add_dependencies(Strings proto)
+endif()
 
 if( WITH_COREDEBUG )
   add_definitions(-ggdb3)
