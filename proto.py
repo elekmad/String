@@ -20,6 +20,9 @@ for entry in db:
 
     if "build/" in os.path.dirname(src):
         continue
+        
+    if "tests/" in os.path.dirname(src):
+        continue
 
     if not src.endswith(".c"):
         continue

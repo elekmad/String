@@ -30,6 +30,7 @@ void String_append_printf(String *self, const char *fmt, ...);
 void String_compute_char_string(const String *self, char **ret);
 int String_compare_with_other(const String *self, const String *other);
 int String_compare_with_char_string(const String *self, const char *other);
+char *String_find_string(const String *self, const char *other);
 int String_do_end_with_other(const String *self, const String *other);
 int String_do_end_with_char_string(const String *self, const char *other);
 int String_do_end_with_data(const String *self, const size_t length, const void *data);

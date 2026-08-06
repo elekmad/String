@@ -136,6 +136,12 @@ int String_compare_with_char_string(const String *self, const char *other)
     return strcmp(char_self, other);
 }
 
+char *String_find_string(const String *self, const char *other)
+{
+    const char *char_self = String_get_char_string(self);
+	return strstr(char_self, other);
+}
+
 int String_do_end_with_other(const String *self, const String *other)
 {
     return String_do_end_with_data(self, String_get_length(other), String_get_char_string(other));

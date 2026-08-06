@@ -13,7 +13,7 @@ include(unittests.cmake)
 include(doxygen.cmake)
 
 find_package(Python3 REQUIRED)
-add_custom_target(String_sproto
+add_custom_target(Strings_proto
     COMMAND ${Python3_EXECUTABLE}
             ${CMAKE_SOURCE_DIR}/proto.py
 )
