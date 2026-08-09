@@ -19,6 +19,10 @@ if(PROJECT_IS_TOP_LEVEL)
 	            ${CMAKE_SOURCE_DIR}/proto.py
 	)
 	add_dependencies(Strings proto)
+else()
+	list(APPEND CPROTO_INCLUDES "--include" "${CMAKE_CURRENT_SOURCE_DIR}")
+	set(CPROTO_INCLUDES "${CPROTO_INCLUDES}" PARENT_SCOPE)
+	message(STATUS "cproto includes : ${CPROTO_INCLUDES}")
 endif()
 
 if( WITH_COREDEBUG )
