@@ -1,3 +1,8 @@
+if(NOT PROJECT_IS_TOP_LEVEL)
+    set(EXTERNAL_PROJECT ON)
+else()
+    set(EXTERNAL_PROJECT OFF)
+endif()
 if(NOT EXTERNAL_PROJECT)
     # Thanks to http://neyasystems.com/an-engineers-guide-to-unit-testing-cmake-and-boost-unit-tests/ for this part
     #Setup CMake to run tests
